@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Crear Cuenta en ShiftMate {% endblock %}
+
+{% block body %}
+
+
+<section class="m-5">
+    <!-- Message -->
+    {% if error %}
+        <div class="alert alert-danger d-flex justify-content-between" role="alert" data-mdb-color="danger">
+            <p class="mb-0"><i class="fas fa-gem me-2">
+            </i>
+            <a href="#" class="text-reset"><strong>{{ error }}</strong>
+            </a> package.
+            </p>
+            <strong>
+            <a href="/docs/standard/pro/" class="text-reset d-none d-lg-block">Learn
+                more</a>
+            </strong>
+        </div>
+    {% endif %}
+    <!-- End Message -->
+
+    <!-- Default Logo -->
+    <div class="logo m-5" style="text-align:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="112.165" height="112.166"><path d="M112.165 56.079c0 30.976-25.109 56.087-56.084 56.087C25.108 112.166 0 87.055 0 56.079 0 25.108 25.107 0 56.081 0c30.975 0 56.084 25.108 56.084 56.079z" style="fill: hsla(137, 20%, 95%, 1);"></path><path d="M80.603 20.75c-5.697.195-10.67 3.34-14.373 7.68-4.1 4.765-6.824 10.411-8.791 16.18-3.514-2.882-6.223-6.611-11.864-8.233-4.359-1.253-8.936-.737-13.146 2.399-1.992 1.489-3.367 3.738-4.02 5.859-1.692 5.498 1.778 10.396 3.354 12.151l3.447 3.691c.709.725 2.422 2.613 1.584 5.319-.9 2.947-4.451 4.85-8.092 3.731-1.627-.499-3.963-1.71-3.439-3.413.215-.699.715-1.225.984-1.821.244-.521.363-.907.438-1.14.665-2.169-.245-4.994-2.57-5.713-2.171-.666-4.391-.138-5.252 2.655-.977 3.174.543 8.935 8.681 11.441 9.535 2.935 17.597-2.259 18.742-9.026.721-4.239-1.195-7.392-4.701-11.441l-2.859-3.163c-1.73-1.729-2.324-4.677-.533-6.942 1.512-1.912 3.664-2.726 7.191-1.768 5.15 1.396 7.443 4.969 11.271 7.851-1.578 5.187-2.613 10.392-3.547 15.059l-.574 3.481c-2.736 14.352-4.826 22.235-10.256 26.76-1.094.779-2.658 1.943-5.014 2.027-1.238.037-1.637-.814-1.654-1.186-.027-.865.703-1.264 1.188-1.652.727-.396 1.824-1.053 1.748-3.156-.078-2.484-2.137-4.639-5.111-4.541-2.229.075-5.625 2.171-5.497 6.011.131 3.967 3.827 6.938 9.401 6.75 2.979-.102 9.633-1.312 16.188-9.105 7.631-8.935 9.766-19.175 11.372-26.671l1.793-9.897c.992.119 2.059.2 3.217.228 9.504.201 14.256-4.72 14.328-8.302.049-2.167-1.42-4.302-3.479-4.251-1.471.041-3.32 1.022-3.762 3.057-.436 1.995 3.023 3.798.32 5.553-1.92 1.242-5.361 2.116-10.209 1.407l.881-4.872c1.799-9.238 4.018-20.6 12.436-20.878.615-.029 2.857.026 2.91 1.512.014.493-.109.623-.689 1.757-.592.884-.814 1.64-.785 2.504.08 2.356 1.873 3.908 4.471 3.818 3.473-.116 4.469-3.496 4.412-5.233-.146-4.085-4.449-6.665-10.14-6.477z"></path></svg>
+    </div>
+    <!-- End Default Logo -->
+
+    <!-- Pills content -->
+    <div class="tab-content">
+        
+        <div class="">
+            <form>
+                <div class="text-center mb-3 d-none">
+                    <p>Sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                    </button>
+                </div>
+
+                <p class="text-center d-none">or:</p>
+
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="registerName" class="form-control" />
+                    <label class="form-label" for="registerName">Name</label>
+                </div>
+
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="registerUsername" class="form-control" />
+                    <label class="form-label" for="registerUsername">Username</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" id="registerEmail" class="form-control" />
+                    <label class="form-label" for="registerEmail">Email</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="registerPassword" class="form-control" />
+                    <label class="form-label" for="registerPassword">Password</label>
+                </div>
+
+                <!-- Repeat Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="registerRepeatPassword" class="form-control" />
+                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="d-none form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                    aria-describedby="registerCheckHelpText" />
+                    <label class="form-check-label" for="registerCheck">
+                    I have read and agree to the terms
+                    </label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+
+                <!-- Login buttons -->
+                <div class="text-center">
+                    <p>¿Ya tienes cuenta? <a href="{{ path('login') }}">Iniciar Sesión</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Pills content -->
+</section>
+
+{% endblock %}

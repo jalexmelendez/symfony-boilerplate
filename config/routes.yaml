@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+controllersAuth:
+    resource:
+        path: ../src/Controller/Auth
+        namespace: App\Controller\Auth
+    type: attribute
+
+authentication_token:
+    path: /api/authentication_token
+    methods: ['POST']

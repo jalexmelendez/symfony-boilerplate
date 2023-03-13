@@ -23,8 +23,8 @@ class AdminUserEvent implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            BeforeEntityPersistedEvent::class => ['hashPasswordOnCreatedUser'],
-            BeforeEntityUpdatedEvent::class => ['hashPasswordOnUpdatedUser'],
+            //BeforeEntityPersistedEvent::class => ['hashPasswordOnCreatedUser'],
+            //BeforeEntityUpdatedEvent::class => ['hashPasswordOnUpdatedUser'],
         ];
     }
 

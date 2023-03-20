@@ -8,6 +8,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -32,6 +34,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * The available user roles, feel free to extend this.
+     * 
+     * @var array<string>
      */
     public const USER_ROLES = [
         'SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
@@ -65,6 +69,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     #[Groups(['write'])]
     private $password;
+
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Team::class)]
+    private Collection $teams;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: TeamMembership::class)]
+    private Collection $teamMemberships;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+        $this->teamMemberships = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->email;
+    }
 
     public function getId(): ?int
     {
@@ -163,5 +184,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Team>
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams->add($team);
+            $team->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->removeElement($team)) {
+            // set the owning side to null (unless already changed)
+            if ($team->getOwner() === $this) {
+                $team->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TeamMembership>
+     */
+    public function getTeamMemberships(): Collection
+    {
+        return $this->teamMemberships;
+    }
+
+    public function addTeamMembership(TeamMembership $teamMembership): self
+    {
+        if (!$this->teamMemberships->contains($teamMembership)) {
+            $this->teamMemberships->add($teamMembership);
+            $teamMembership->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeamMembership(TeamMembership $teamMembership): self
+    {
+        if ($this->teamMemberships->removeElement($teamMembership)) {
+            // set the owning side to null (unless already changed)
+            if ($teamMembership->getUser() === $this) {
+                $teamMembership->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

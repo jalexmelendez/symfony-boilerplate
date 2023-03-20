@@ -5,7 +5,83 @@
 
 {# The main page content block #}
 {% block main %}
-   CUSTOM VIEW
+
+   <div class="flex my-5">
+      <h2>HEY! Here you can add some widgets or custom views.</h2>                    
+      <div class="card widget-flat">
+         <div class="card-body">
+            <div class="float-end">
+               <i class="mdi mdi-pulse widget-icon"></i>
+            </div>
+            <h5 class="text-muted fw-normal mt-0" title="Growth">Growth</h5>
+            <h3 class="mt-3 mb-3">+ 30.56%</h3>
+            <p class="mb-0 text-muted">
+               <span class="text-success me-2">
+                     <i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
+               <span class="text-nowrap">Since last month</span>
+            </p>
+         </div>
+      </div>                                                      
+      <div class="card my-5">
+         <div class="card-body">
+
+            <div data-simplebar="" style="max-height:330px">
+               <div class="timeline-alt pb-0">
+                     <div class="timeline-item">
+                        <i class="mdi mdi-upload bg-info-lighten text-info timeline-icon"></i>
+                        <div class="timeline-item-info">
+                           <a href="#" class="text-info fw-bold mb-1 d-block">You sold an item</a>
+                           <small>Paul Burgess just purchased “Hyper - Admin Dashboard”!</small>
+                           <p class="mb-0 pb-2">
+                                 <small class="text-muted">5 minutes ago</small>
+                           </p>
+                        </div>
+                     </div>
+
+                     <div class="timeline-item">
+                        <i class="mdi mdi-airplane bg-primary-lighten text-primary timeline-icon"></i>
+                        <div class="timeline-item-info">
+                           <a href="#" class="text-primary fw-bold mb-1 d-block">Product on the Bootstrap Market</a>
+                           <small>Dave Gamache added
+                                 <span class="fw-bold">Admin Dashboard</span>
+                           </small>
+                           <p class="mb-0 pb-2">
+                                 <small class="text-muted">30 minutes ago</small>
+                           </p>
+                        </div>
+                     </div>
+
+                     <div class="timeline-item">
+                        <i class="mdi mdi-microphone bg-info-lighten text-info timeline-icon"></i>
+                        <div class="timeline-item-info">
+                           <a href="#" class="text-info fw-bold mb-1 d-block">Robert Delaney</a>
+                           <small>Send you message
+                                 <span class="fw-bold">"Are you there?"</span>
+                           </small>
+                           <p class="mb-0 pb-2">
+                                 <small class="text-muted">2 hours ago</small>
+                           </p>
+                        </div>
+                     </div>
+
+                     <div class="timeline-item">
+                        <i class="mdi mdi-upload bg-primary-lighten text-primary timeline-icon"></i>
+                        <div class="timeline-item-info">
+                           <a href="#" class="text-primary fw-bold mb-1 d-block">Audrey Tobey</a>
+                           <small>Uploaded a photo
+                                 <span class="fw-bold">"Error.jpg"</span>
+                           </small>
+                           <p class="mb-0 pb-2">
+                                 <small class="text-muted">14 hours ago</small>
+                           </p>
+                        </div>
+                     </div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
 {% endblock main %}
 
 {# Let\'s remove/empty the footer #}

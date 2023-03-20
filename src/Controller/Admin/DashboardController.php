@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Team;
+use App\Entity\TeamMembership;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -37,21 +39,28 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Shiftmate');
+            ->setTitle('Citadel V2.0');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
 
         /**
          * Core module accesible only to super admins.
          */
-        if ($this->getUser()->hasRole('ROLE_SUPER_ADMIN')) {
-            yield MenuItem::subMenu('Core', 'fa fa-cog')->setSubItems([
+        if ($user->hasRole('ROLE_SUPER_ADMIN')) {
+            yield MenuItem::subMenu('Admin', 'fa fa-dashboard')->setSubItems([
                 MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+                MenuItem::linkToCrud('Teams', 'fa fa-user-group', Team::class),
+                MenuItem::linkToCrud('Memberships', 'fa fa-user', TeamMembership::class),
             ]);
         }
+
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
